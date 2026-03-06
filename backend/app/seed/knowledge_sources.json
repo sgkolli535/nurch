@@ -1,0 +1,82 @@
+[
+  {
+    "name": "UC Davis Vegetable Research & Information Center",
+    "abbreviation": "UC_DAVIS",
+    "url": "https://vric.ucdavis.edu/",
+    "category": "university_extension",
+    "credibility_tier": 1,
+    "description": "Research-based vegetable growing information from UC Davis."
+  },
+  {
+    "name": "Cooperative Extension Service",
+    "abbreviation": "COOP_EXT",
+    "url": "https://nifa.usda.gov/cooperative-extension-system",
+    "category": "university_extension",
+    "credibility_tier": 1,
+    "description": "Network of state-based extension offices providing research-based horticultural guidance."
+  },
+  {
+    "name": "USDA Plant Hardiness Zone Map",
+    "abbreviation": "USDA",
+    "url": "https://planthardiness.ars.usda.gov/",
+    "category": "government",
+    "credibility_tier": 1,
+    "description": "Official hardiness zone, soil, and agricultural data from the US Department of Agriculture."
+  },
+  {
+    "name": "Royal Horticultural Society",
+    "abbreviation": "RHS",
+    "url": "https://www.rhs.org.uk/",
+    "category": "horticultural_society",
+    "credibility_tier": 2,
+    "description": "UK-based horticultural society with extensive plant care databases and growing guides."
+  },
+  {
+    "name": "American Phytopathological Society",
+    "abbreviation": "APS",
+    "url": "https://www.apsnet.org/",
+    "category": "research_journal",
+    "credibility_tier": 1,
+    "description": "Professional society for plant disease science with peer-reviewed diagnostic guides."
+  },
+  {
+    "name": "Cornell Plant Disease Diagnostic Clinic",
+    "abbreviation": "CORNELL",
+    "url": "https://plantclinic.cornell.edu/",
+    "category": "university_extension",
+    "credibility_tier": 1,
+    "description": "Disease identification guides and diagnostic factsheets from Cornell University."
+  },
+  {
+    "name": "Missouri Botanical Garden Plant Finder",
+    "abbreviation": "MOBOT",
+    "url": "https://www.missouribotanicalgarden.org/plantfinder",
+    "category": "horticultural_society",
+    "credibility_tier": 2,
+    "description": "Comprehensive plant database with growing conditions, care information, and pest/disease data."
+  },
+  {
+    "name": "Nurch Species Database",
+    "abbreviation": "SPECIES_DB",
+    "url": null,
+    "category": "internal",
+    "credibility_tier": 2,
+    "description": "Curated species profiles maintained within the Nurch platform, compiled from authoritative sources."
+  },
+  {
+    "name": "UC Integrated Pest Management Program",
+    "abbreviation": "UC_IPM",
+    "url": "https://ipm.ucanr.edu/",
+    "category": "university_extension",
+    "credibility_tier": 1,
+    "description": "Science-based pest management information from the University of California."
+  },
+  {
+    "name": "Open-Meteo Weather API",
+    "abbreviation": "WEATHER",
+    "url": "https://open-meteo.com/",
+    "category": "government",
+    "credibility_tier": 1,
+    "description": "Weather forecast data sourced from national weather services."
+  }
+]
