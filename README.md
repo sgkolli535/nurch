@@ -92,7 +92,6 @@ The garden assistant isn't a simple chat wrapper — it's a **stateful LangGraph
 gather_context → agent_reasoning ⟷ tools → cite_sources → score_confidence → format_response
 ```
 
-**Why this is complex:**
 - The agent must decide at each turn whether to call tools or respond directly. The `should_use_tools` conditional edge inspects the LLM's response for `tool_calls` and loops back through tool execution until the LLM is satisfied.
 - 5 tools (`get_garden_overview`, `get_plant_detail`, `get_weather`, `get_care_calendar`, `get_species_info`) each open independent database sessions and query across multiple joined tables.
 - **Citation extraction** runs post-response, parsing both explicit `(Source: UC_DAVIS)` patterns and natural language references ("According to Cooperative Extension...") via regex.
@@ -107,7 +106,6 @@ Each plant diagnosis is not a single label — it's a **structured JSON response
 hydration · nutrients · pests · disease · environmental_stress · growth
 ```
 
-**Why this is complex:**
 - The **context payload** assembled for each diagnosis includes: the photo, plant species profile (ideal ranges, known symptoms from our curated DB), location data (weather forecast, soil type, hardiness zone, day length), and the last 5 diagnoses for longitudinal change detection.
 - When a plant has previous photos, both images are sent for **change detection** — the AI must compare across time and identify improvements, deteriorations, new issues, and resolved issues.
 - The v2 diagnosis prompt (see Prompt Engineering below) requires **mandatory reasoning chains** — the AI must show step-by-step logic for every observation, not just state conclusions.
@@ -124,7 +122,6 @@ backend/app/prompts/
 └── agent.py         # v1 (basic) → v2 (show work, cite sources, admit uncertainty)
 ```
 
-**Why this matters:**
 - Each version has a documented **changelog explaining why the change was made** and its measured impact. For example, v2 of the diagnosis prompt was motivated by the observation that v1 produced responses indistinguishable from generic ChatGPT — adding mandatory citations and reasoning chains reduced user follow-up questions by preemptively answering "why."
 - The `PromptVersion` model in the DB tracks `eval_metrics` per version, enabling **A/B testing**: set `is_active=true` on a DB row to override the code-level prompt without a deploy.
 - Every diagnosis stores `prompt_version_used`, so you can retroactively analyze which prompt version produced which quality of output.
@@ -235,46 +232,6 @@ nurch/
 │       ├── services/      (6)        # API client, typed service modules
 │       ├── stores/        (2)        # Zustand state management
 │       └── theme/         (4)        # Nurch design system tokens
-├── demo/                             # Self-contained HTML demo
 ├── FAILURES.md                       # AI failure patterns & mitigations
 └── README.md
-```
-
----
-
-## Running Locally
-
-### Prerequisites
-- Python 3.11+ (via `uv`)
-- Node.js 18+
-- Supabase account (PostgreSQL + Storage)
-- One AI provider key: OpenAI, Gemini, or Anthropic
-
-### Backend
-```bash
-cd backend
-uv venv --python 3.14
-source .venv/bin/activate
-cp .env.example .env                   # Edit with your credentials
-uv pip install -e .
-alembic upgrade head                   # Create database tables
-.venv/bin/python -m app.seed.load_species   # Seed 20 plant species
-uvicorn app.main:app --reload          # http://localhost:8000
-```
-
-### Mobile
-```bash
-cd mobile
-npm install
-npx expo start                         # Press 'w' for web
-```
-
-### Environment Variables
-```env
-DATABASE_URL=postgresql+asyncpg://...   # Supabase pooler connection
-SUPABASE_URL=https://xxx.supabase.co
-SUPABASE_SERVICE_KEY=eyJ...
-AI_PROVIDER=openai                      # or "gemini" or "claude"
-OPENAI_API_KEY=sk-...                   # if using OpenAI
-FIREBASE_CREDENTIALS_PATH=./firebase-service-account.json
 ```
