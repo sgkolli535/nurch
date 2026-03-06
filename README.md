@@ -1,16 +1,10 @@
 # Nurch — AI-Powered Plant Health Platform
 
-<p align="center">
-  <img src="demo/screenshot-garden.png" alt="Nurch Garden View" width="300" />
-  <img src="demo/screenshot-diagnosis.png" alt="Nurch Diagnosis" width="300" />
-</p>
+![Nurch Demo](nurch_demo-ezgif.com-video-to-gif-converter.gif)
 
 > Virtual gardens · AI diagnostics · Trustworthy recommendations
 
 Nurch is a mobile application that creates **digital twins of real-world gardens** and uses **AI vision models** to diagnose plant health issues, predict problems before they become visible, and deliver care recommendations grounded in scientific sources. Every AI response shows its reasoning, cites its sources, and states its confidence level — differentiating Nurch from generic chatbot advice.
-
-## Demo
-
 
 ---
 
